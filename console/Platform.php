@@ -13,18 +13,30 @@ class Platform
     /**
      * 根据参数进行计算
      */
-    public function compute($numA,$numB,$sign)
+    public static function compute($numA,$numB,$sign)
     {
-        $model = new Math($sign,$numA,$numB);
         try{
-            return $model->compute();
+            switch ($sign) {
+                case '-':
+                    $model = new \console\Operation\SubModel($numA,$numB);
+                    break;
+                case '*':
+                    $model = new \console\Operation\MulModel($numA,$numB);
+                    break;
+                case'/':
+                    $model = new \console\Operation\DivModel($numA,$numB);
+                    break;
+                case '+':
+                    $model = new \console\Operation\SumModel($numA,$numB);
+                    break;
+                default:
+                    $model = new \console\Operation\SumModel($numA,$numB);
+                    break;
+            }
+
+            return $model->getResult();
         }catch (\Exception $e){
             return $e->getMessage();
         }
     }
-
-
-
-
-
 }

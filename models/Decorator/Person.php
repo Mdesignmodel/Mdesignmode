@@ -8,12 +8,12 @@
  */
 namespace Decorator;
 
-class Person
+class PersonModel
 {
 
     public function Show()
     {
-        echo '打扮方案--';
+        echo '打扮方案';
 
     }
 }

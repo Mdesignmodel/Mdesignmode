@@ -8,7 +8,7 @@
  */
 namespace Console\Operation;
 
-class DivModel extends \console\OperationModel
+class DivModel extends \Console\OperationModel
 {
     public function getResult()
     {

@@ -7,7 +7,7 @@
  */
 namespace Market\Strategy;
 
-class CashReturn extends \Market\Strategy
+class CashReturnModel extends \Market\Strategy
 {
 
     private $total;

@@ -7,7 +7,7 @@
  */
 namespace Market\Strategy;
 
-class CashNormal extends \Market\Strategy
+class CashNormalModel extends \Market\Strategy
 {
 
 

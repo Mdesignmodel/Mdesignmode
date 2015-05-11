@@ -8,7 +8,8 @@
  */
 namespace Decorator;
 
-class Hat extends \Decorator\Decorator
+
+class HatModel extends \Decorator\DressModel
 {
     private $hats = [
         1=>'鸭舌帽',

@@ -7,7 +7,9 @@
  * Time: 下午2:51
  */
 namespace Decorator;
-class Coat extends \Decorator\Decorator
+
+
+class CoatModel extends \Decorator\DressModel
 {
 
     private $coats = [
@@ -20,7 +22,6 @@ class Coat extends \Decorator\Decorator
     public function Show()
     {
         parent::Show();
-
         $this->setList($this->getName());
     }
 

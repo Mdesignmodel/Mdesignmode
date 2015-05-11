@@ -8,7 +8,7 @@
 
 namespace Decorator;
 
-abstract class Decorator extends \Decorator\Person
+abstract class DressModel extends \Decorator\PersonModel
 {
     protected $component;
     protected $type;
@@ -23,7 +23,7 @@ abstract class Decorator extends \Decorator\Person
     public function Show()
     {
         if ($this->component != null) {
-            $this->component->Show();
+            $this->component -> Show();
         }
     }
 

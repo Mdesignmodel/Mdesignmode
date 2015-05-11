@@ -7,7 +7,7 @@
  */
 namespace Market\Strategy;
 
-class CashRebate extends \Market\Strategy
+class CashRebateModel extends \Market\Strategy
 {
     private $discount;
 

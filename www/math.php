@@ -1,13 +1,25 @@
 <?php
-define('DIR', __DIR__ . '/..');
+define('DIR', __DIR__ );
 
-require_once DIR . '/Decorator/Client.php';
-require_once DIR . '/Decorator/Person.php';
-require_once DIR . '/Decorator/Model/Decorator.php';
-require_once DIR . '/Decorator/Model/Decorator/Coat.php';
-require_once DIR . '/Decorator/Model/Decorator/Pants.php';
-require_once DIR . '/Decorator/Model/Decorator/Hat.php';
+require DIR.'/base.php';
 
 
-$client = new Client();
-$client->indexAction();
+
+$client = new ClientController();
+
+/*装饰模式*/
+//$client->decoratorAction();
+
+/*简单工厂模式*/
+//$client->consoleAction(2,3,'+');
+
+/*策略模式*/
+$params = array(
+    ['code'=>1,'num'=>2],
+    ['code'=>2,'num'=>1],
+);
+$client->marketAction($params);
+
+/*代理模式*/
+//$client->proxyAction();
+

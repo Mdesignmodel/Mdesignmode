@@ -19,13 +19,13 @@ class Context
 
         switch($active){
             case 1:
-                $this->strategy = new \Market\Strategy\CashRebate(0.8);
+                $this->strategy = new \Market\Strategy\CashRebateModel(0.8);
                 break;
             case 2:
-                $this->strategy = new \Market\Strategy\CashRebate(100,10);
+                $this->strategy = new \Market\Strategy\CashRebateModel(100,10);
                 break;
             default:
-                $this->strategy = new \Market\Strategy\CashNormal();
+                $this->strategy = new \Market\Strategy\CashNormalModel();
                 break;
         }
     }

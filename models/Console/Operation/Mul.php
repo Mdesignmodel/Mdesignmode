@@ -8,7 +8,7 @@
  */
 namespace Console\Operation;
 
-class MulModel extends \console\OperationModel
+class MulModel extends \Console\OperationModel
 {
     public function getResult()
     {

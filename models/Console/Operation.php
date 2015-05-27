@@ -17,9 +17,18 @@ class OperationModel
     protected $numA = 0;
     protected $numB = 0;
 
-    public function __construct($numA, $numB)
+    public function __construct()
+    {
+    }
+
+    public function setNumA($numA)
     {
         $this->numA = $numA;
+    }
+
+     public function setNumB($numB)
+    {
         $this->numB = $numB;
     }
+
 }

@@ -13,33 +13,48 @@ class ClientController
     /**
      * 简单工厂模式
      */
-    public function consoleAction($numA,$numB,$sign)
+    public function simpleconsoleAction($numA,$numB,$sign)
     {
         try{
             switch ($sign) {
                 case '-':
-                    $model = new \console\Operation\SubModel($numA,$numB);
+                    $model = new \console\Operation\SubModel();
                     break;
                 case '*':
-                    $model = new \console\Operation\MulModel($numA,$numB);
+                    $model = new \console\Operation\MulModel();
                     break;
                 case'/':
-                    $model = new \console\Operation\DivModel($numA,$numB);
+                    $model = new \console\Operation\DivModel();
                     break;
                 case '+':
-                    $model = new \console\Operation\SumModel($numA,$numB);
+                    $model = new \console\Operation\SumModel();
                     break;
                 default:
-                    $model = new \console\Operation\SumModel($numA,$numB);
+                    $model = new \console\Operation\SumModel();
                     break;
             }
+            $model->setNumA($numA);
+            $model->setNumB($numB);
 
             echo $model->getResult();
         }catch (\Exception $e){
             echo $e->getMessage();
         }
-
     }
+
+    /**
+     * 工厂方法模式
+     */
+    public function factoryAction($numA,$numB)
+    {
+        $fmodel = new \Console\Factory\SumModel();
+        $model = $fmodel->createOperation();
+        $model->setNumA($numA);
+        $model->setNumB($numB);
+
+        echo $model->getResult();
+    }
+
 
     /**
      * 策略模式
@@ -108,8 +123,69 @@ class ClientController
         $girl = new \Proxy\GirlModel();
         $girl->setName('娇娇');
 
-        $pursuit = new \Proxy\PursuitModel($girl->getName());
-        $pursuit->GiveFlowers();
+        $proxyModel = new \Proxy\ProxyModel($girl->getName());
+
+        $proxyModel->GiveFlowers();
+        $proxyModel->GiveChocolate();
+        $proxyModel->GiveDolls();
 
     }
+
+    /**
+     * 原型 复制模式
+     */
+    public function copyAction()
+    {
+        $obj = new \Copy\ResumeModel();
+        $obj->setNames(1);
+        $obj->setNames(2);
+        $obj2 = clone $obj;
+        $obj2->setNames(3);
+
+        var_export($obj->getNames());
+        var_export($obj2->getNames());
+
+//        $obj->obj1 = new \Copy\SubObject();
+//        $obj->obj2 = new \Copy\SubObject();
+
+//        $obj2 = clone $obj;
+
+//        var_export($obj);
+//        var_export($obj2);
+
+    }
+
+    /**
+     * 模板模式
+     */
+    public function templateAction()
+    {
+        $pA = new \Template\PaperAModel();
+        $pA->setName('ming');
+        echo '名字'.$pA->getName();
+        $pA->question1();
+        $pA->question2();
+        $pA->question3();
+
+        $pB = new \Template\PaperBModel();
+        $pB->setName('yun');
+        echo '名字'.$pB->getName();
+        $pB->question1();
+        $pB->question2();
+        $pB->question3();
+    }
+
+    /**
+     * 外观模式
+     */
+    public function facadeAction()
+    {
+        $fundA = new \Facade\FundAModel();
+        $fundA->buy();
+
+        $fundB = new \Facade\FundBModel();
+        $fundB->sell();
+    }
+
+
 }

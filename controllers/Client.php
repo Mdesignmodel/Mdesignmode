@@ -187,5 +187,35 @@ class ClientController
         $fundB->sell();
     }
 
+    /**
+     * 建造者模式
+     */
+    public function builderAction()
+    {
+        $thin = new \Builder\PersonThinModel();
+        $fat  = new \Builder\PersonFatModel();
+
+        $director = new \Builder\DirectorModel($thin);
+        $director->create();
+
+//        $director = new \Builder\DirectorModel($fat);
+//        $director->create();
+    }
+
+    /**
+     * 观察者模式
+     */
+    public function observerAction()
+    {
+        $girl = new \Observer\People\GirlModel();
+        $boy  = new \Observer\People\BoyModel();
+
+        $paper = new \Observer\PaperModel();
+        $paper->register($girl);
+        $paper->register($boy);
+
+        $paper->trigger();
+    }
+
 
 }

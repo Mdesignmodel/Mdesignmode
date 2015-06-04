@@ -33,4 +33,10 @@ $client = new ClientController();
 //$client->templateAction();
 
 /*外观模式*/
-$client->facadeAction();
+//$client->facadeAction();
+
+/*建造者模式*/
+//$client->builderAction();
+
+/*观察者模式*/
+$client->observerAction();

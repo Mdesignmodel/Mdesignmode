@@ -7,7 +7,16 @@
  */
 namespace Builder;
 
-class BuildModel
+abstract class BuildModel
 {
-
+    /**
+     * 头部
+     * @return mixed
+     */
+    abstract public function BuildHead();
+    abstract public function BuildBody();
+    abstract public function BuildArmLeft();
+    abstract public function BuildArmRight();
+    abstract public function BuildLegLeft();
+    abstract public function BuildLegRight();
 }

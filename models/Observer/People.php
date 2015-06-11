@@ -7,7 +7,12 @@
  */
 namespace Observer;
 
-interface PeopleModel
+abstract class PeopleModel
 {
-    public function update();
+    public $name;
+    abstract public function update();
+    public function test()
+    {
+
+    }
 }

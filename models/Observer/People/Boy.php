@@ -7,11 +7,18 @@
  */
 namespace Observer\People;
 
-use Observer\PeopleModel as PeopleInterface;
-class BoyModel implements   PeopleInterface
+use Observer\PeopleModel as PeopleAbsract;
+
+class BoyModel extends PeopleAbsract
 {
+    public function __constract()
+    {
+
+    }
+
     public function update()
     {
-        echo '男生举手';
+        $this->name = 'all';
+        echo $this->name.'男生举手';
     }
 }

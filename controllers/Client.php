@@ -217,5 +217,21 @@ class ClientController
         $paper->trigger();
     }
 
+    /**
+     * 单例模式
+     */
+    public function singletonAction()
+    {
+        echo '--'.__LINE__.'--';
+        $one = new \Singleton\OneModel();
+        echo '--'.__LINE__.'--';
+        $two = \Singleton\OneModel::getInstance();
+        echo '--'.__LINE__.'--';
+        $three = new \Singleton\OneModel();
+        echo '--'.__LINE__.'--';
+        $four = \Singleton\OneModel::getInstance();
+        return true;
+    }
+
 
 }

@@ -39,4 +39,7 @@ $client = new ClientController();
 //$client->builderAction();
 
 /*观察者模式*/
-$client->observerAction();
+//$client->observerAction();
+
+/*单例模式*/
+$client->singletonAction();

@@ -42,4 +42,6 @@ $client = new ClientController();
 //$client->observerAction();
 
 /*单例模式*/
-$client->singletonAction();
+//$client->singletonAction();
+
+$client->abfactoryAction();

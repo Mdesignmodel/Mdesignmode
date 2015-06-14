@@ -9,11 +9,11 @@ namespace Singleton;
 
 class OneModel
 {
-    private  static $instance;
+    private static $instance;
 
     public static function getInstance()
     {
-        if(empty(self::$instance)){
+        if (null === self::$instance) {
             self::$instance = new static();
         }
 

@@ -233,5 +233,16 @@ class ClientController
         return true;
     }
 
+    /**
+     * 不完整抽象工厂模式
+     */
+    public function abfactoryAction()
+    {
+        $modelname = '\Abfactory\Dog\BlackModel';
+        $factory = new \Abfactory\FactoryModel();
+        $model = $factory->create($modelname);
+        $model->eat();
+    }
+
 
 }

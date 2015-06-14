@@ -234,14 +234,27 @@ class ClientController
     }
 
     /**
-     * 不完整抽象工厂模式
+     * 抽象工厂模式
+     *
+     * 缺点： 增加新动物的时候，需要修改factory文件
+     *  解决：引入反射模式：
      */
     public function abfactoryAction()
     {
-        $modelname = '\Abfactory\Dog\BlackModel';
+        $blackModel = new \Abfactory\BlackfactoryModel();
+        $cat = $blackModel->creatCat();
+        $cat->eat();
+
+        $whiteModel = new \Abfactory\WhitefactoryModel();
+        $dog = $whiteModel->creatDog();
+        $dog->eat();
+
+        /*反射模式*/
+        $dog = '\Abfactory\Dog\BlackModel';
         $factory = new \Abfactory\FactoryModel();
-        $model = $factory->create($modelname);
+        $model = $factory->create($dog);
         $model->eat();
+
     }
 
 

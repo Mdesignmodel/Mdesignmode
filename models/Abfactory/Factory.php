@@ -3,13 +3,18 @@
  * Created by PhpStorm.
  * User: abu
  * Date: 15/6/14
- * Time: 下午9:07
+ * Time: 下午9:46
  */
 namespace Abfactory;
+
 class FactoryModel
 {
-    public function create($model)
+    public function __construct()
     {
-        return new $model();
+    }
+
+    public function create($modelname)
+    {
+        return new $modelname();
     }
 }

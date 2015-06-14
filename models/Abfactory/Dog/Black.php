@@ -6,12 +6,13 @@
  * Time: 下午8:11
  */
 namespace Abfactory\Dog;
-use \Abfactory\IdogModel;
 
-class BlackModel extends IdogModel
+use \Abfactory\Dog\AbstractModel as DogAbstractModel;
+
+class BlackModel extends DogAbstractModel
 {
     public function eat()
     {
-        echo '吃吃';
+        echo '黑狗吃吃';
     }
 }

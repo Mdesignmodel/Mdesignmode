@@ -13,9 +13,9 @@ class ClientController
     /**
      * 简单工厂模式
      */
-    public function simpleconsoleAction($numA,$numB,$sign)
+    public function simpleconsoleAction($numA, $numB, $sign)
     {
-        try{
+        try {
             switch ($sign) {
                 case '-':
                     $model = new \console\Operation\SubModel();
@@ -37,7 +37,7 @@ class ClientController
             $model->setNumB($numB);
 
             echo $model->getResult();
-        }catch (\Exception $e){
+        } catch (\Exception $e) {
             echo $e->getMessage();
         }
     }
@@ -45,10 +45,10 @@ class ClientController
     /**
      * 工厂方法模式
      */
-    public function factoryAction($numA,$numB)
+    public function factoryAction($numA, $numB)
     {
         $fmodel = new \Console\Factory\SumModel();
-        $model = $fmodel->createOperation();
+        $model  = $fmodel->createOperation();
         $model->setNumA($numA);
         $model->setNumB($numB);
 
@@ -162,14 +162,14 @@ class ClientController
     {
         $pA = new \Template\PaperAModel();
         $pA->setName('ming');
-        echo '名字'.$pA->getName();
+        echo '名字' . $pA->getName();
         $pA->question1();
         $pA->question2();
         $pA->question3();
 
         $pB = new \Template\PaperBModel();
         $pB->setName('yun');
-        echo '名字'.$pB->getName();
+        echo '名字' . $pB->getName();
         $pB->question1();
         $pB->question2();
         $pB->question3();
@@ -222,14 +222,15 @@ class ClientController
      */
     public function singletonAction()
     {
-        echo '--'.__LINE__.'--';
+        echo '--' . __LINE__ . '--';
         $one = new \Singleton\OneModel();
-        echo '--'.__LINE__.'--';
+        echo '--' . __LINE__ . '--';
         $two = \Singleton\OneModel::getInstance();
-        echo '--'.__LINE__.'--';
+        echo '--' . __LINE__ . '--';
         $three = new \Singleton\OneModel();
-        echo '--'.__LINE__.'--';
+        echo '--' . __LINE__ . '--';
         $four = \Singleton\OneModel::getInstance();
+
         return true;
     }
 
@@ -242,18 +243,49 @@ class ClientController
     public function abfactoryAction()
     {
         $blackModel = new \Abfactory\BlackfactoryModel();
-        $cat = $blackModel->creatCat();
+        $cat        = $blackModel->creatCat();
         $cat->eat();
 
         $whiteModel = new \Abfactory\WhitefactoryModel();
-        $dog = $whiteModel->creatDog();
+        $dog        = $whiteModel->creatDog();
         $dog->eat();
 
         /*反射模式*/
-        $dog = '\Abfactory\Dog\BlackModel';
+        $dog     = '\Abfactory\Dog\BlackModel';
         $factory = new \Abfactory\FactoryModel();
-        $model = $factory->create($dog);
+        $model   = $factory->create($dog);
         $model->eat();
+
+    }
+
+    /**
+     * 状态模式
+     */
+    public function stateAction()
+    {
+
+        $workModel = new \State\Work();
+        $workModel->setState(new \State\Status\StateA());
+
+//
+        $workModel->setHour(11);
+        $workModel->request();
+
+        $workModel->setHour(13);
+        $workModel->request();
+
+        $workModel->setHour(16);
+        $workModel->request();
+
+        $workModel->setHour(18);
+        $workModel->request();
+
+        /*切回下午的状态*/
+        $workModel->setState(new \State\Status\StateC());
+        $workModel->setHour(18);
+        $workModel->setFinish(true);
+        $workModel->request();
+
 
     }
 

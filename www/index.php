@@ -44,4 +44,8 @@ $client = new ClientController();
 /*单例模式*/
 //$client->singletonAction();
 
-$client->abfactoryAction();
+/*抽象工厂模式*/
+//$client->abfactoryAction();
+
+/*状态模式*/
+$client->stateAction();

@@ -13,6 +13,10 @@ class FactoryModel
     {
     }
 
+    /**
+     * @param $modelname
+     * @return \Abfactory\Dog\AbstractModel
+     */
     public function create($modelname)
     {
         return new $modelname();

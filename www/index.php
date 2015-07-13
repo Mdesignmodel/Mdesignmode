@@ -48,4 +48,16 @@ $client = new ClientController();
 //$client->abfactoryAction();
 
 /*状态模式*/
-$client->stateAction();
+//$client->stateAction();
+
+/*适配器模式*/
+//$client->adapterAction();
+
+/*备忘录模式*/
+//$client->mementoAction();
+
+/*组合模式*/
+//$client->compositeAction();
+
+/*迭代器模式*/
+$client->iteratorAction();

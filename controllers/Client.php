@@ -263,7 +263,7 @@ class ClientController
      */
     public function stateAction()
     {
-
+        $finish    = true;
         $workModel = new \State\Work();
         $workModel->setState(new \State\Status\StateA());
 
@@ -278,15 +278,94 @@ class ClientController
         $workModel->request();
 
         $workModel->setHour(18);
+        $workModel->setFinish($finish);
         $workModel->request();
 
-        /*切回下午的状态*/
-        $workModel->setState(new \State\Status\StateC());
-        $workModel->setHour(18);
-        $workModel->setFinish(true);
-        $workModel->request();
+    }
 
+    /**
+     * 适配器模式
+     */
+    public function adapterAction()
+    {
+        $forward = new \Adapter\Player\Forwards('xx');
+        $forward->Attack();
 
+        $guards = new \Adapter\Player\Guards('yy');
+        $guards->Attack();
+
+        $center = new \Adapter\Player\Translator('YM');
+        $center->attack();
+    }
+
+    /**
+     * 备忘录模式
+     */
+    public function mementoAction()
+    {
+        $people = new \Memento\Gamepeople();
+        $people->setState('on');
+
+        $taker = new \Memento\Caretaker();
+        $taker->setMemento($people->createMemento());
+
+        $people->setState('off');
+        echo $people->getState();
+
+        $people->reset($taker->getMemento());
+        echo $people->getState();
+
+    }
+
+    /**
+     * 组合模式
+     */
+    public function compositeAction()
+    {
+        $submenu1 = new \Composite\Menu('submenu1');
+        $submenu2 = new \Composite\Menu('submenu2');
+
+        $leaf1 = new \Composite\Leaf('leaf1', 'url1');
+        $leaf2 = new \Composite\Leaf('leaf2', 'url2');
+        $leaf3 = new \Composite\Leaf('leaf3', 'url3');
+        $leaf4 = new \Composite\Leaf('leaf4', 'url4');
+        $leaf5 = new \Composite\Leaf('leaf5', 'url5');
+
+        $submenu1->add($leaf1);
+        $submenu1->add($leaf2);
+        $submenu1->add($leaf3);
+
+        $submenu2->add($leaf4);
+        $submenu2->add($leaf5);
+
+        $memu = new \Composite\Menu('allmenu');
+        $memu->add($submenu1);
+        $memu->add($submenu2);
+        $memu->display();
+    }
+
+    /**
+     * 迭代器模式
+     */
+    public function iteratorAction()
+    {
+        $array    = [1 => 1, 2 => 2, 3 => 3];
+        $a = new \Iterator\Aggregate($array);
+        $i = new \Iterator\Menuiterator($a);
+
+        while ($i->valid()) {
+            echo $i->key().'=>'.$i->current().PHP_EOL;
+            $i->next();
+        }
+
+        $array    = [1 => 'a', 2 => 'b', 3 => 'c'];
+        $a = new \Iterator\Aggregate($array);
+        $si   = new \Iterator\Sampleiterator($a);
+
+        while($si->valid()){
+            echo $si->key().'=>'.$si->current().PHP_EOL;
+            $si->next();
+        }
     }
 
 

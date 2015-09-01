@@ -1,7 +1,7 @@
 <?php
 define('DIR', __DIR__ );
 
-require DIR.'/base.php';
+require DIR.'/../../lib/base.php';
 
 
 

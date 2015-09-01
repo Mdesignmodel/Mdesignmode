@@ -1,6 +1,7 @@
 <?php
 /**
- * 不使用系统函数来定位
+ *  PHP  已集成
+ * @link  http://php.net/manual/en/class.iterator.php
  * Created by PhpStorm.
  * User: abu
  * Date: 15/7/13

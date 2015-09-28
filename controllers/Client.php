@@ -8,8 +8,6 @@
  */
 class ClientController
 {
-
-
     /**
      * 简单工厂模式
      */
@@ -367,6 +365,5 @@ class ClientController
             $si->next();
         }
     }
-
-
+    
 }

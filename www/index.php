@@ -60,4 +60,8 @@ $client = new ClientController();
 //$client->compositeAction();
 
 /*迭代器模式*/
-$client->iteratorAction();
+//$client->iteratorAction();
+
+
+/*命令模式*/
+$client->commandAction();

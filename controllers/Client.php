@@ -371,37 +371,18 @@ class ClientController
      */
     public function commandAction()
     {
-        $custom1  = new \Command\CustomModel();
-        $server1  = new \Command\ServerModel();
-        $cook     = new \Command\CookModel();
-        $namelist = $server1->getNamelist();
-        var_dump($namelist);
-        $no = $server1->call('custom', $custom1);
-        $custom1->setNo($no);
-        foreach ($namelist as $k => $m) {
-            if ($k % 2) {
-                $server1->add($m, 2);
-            }
-        }
+        $boy = 'boy';
+        $boy1 = 'boy1';
+        $muttom1 = new \Command\Barbecuer\BakemuttonModel($boy);
+        $muttom2 = new \Command\Barbecuer\BakemuttonModel($boy1);
+        $chicken = new \Command\Barbecuer\BakechickenModel($boy);
 
-        $custom2 = new \Command\CustomModel();
-        $no      = $server1->call('custom', $custom2);
-        $custom2->setNo($no);
-        foreach ($namelist as $k => $m) {
-            if (in_array($k, [1, 2, 5])) {
-                $server1->add($m, 1);
-            }
-        }
+        $waiter = new \Command\WaiterModel();
+        $waiter->set($muttom1);
+        $waiter->set($muttom2);
+        $waiter->set($chicken);
 
-        var_dump($server1->getList());
-
-        $cook->setList($server1->call('cook'));
-        $server1->setBacklist($cook->getBackList());
-
-        $custom1->setBacklist($server1->getBacklist($custom1->getNo()));
-        $custom2->setBacklist($server1->getBacklist($custom2->getNo()));
-
-        var_dump($custom1->getBacklist(), $custom2->getBacklist());
+        $waiter->notify();
     }
 
 
